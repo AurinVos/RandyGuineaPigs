@@ -174,6 +174,7 @@ if st.sidebar.button("Run Simulation"):
                      .groupby(['Simulation','Population'])
                      ['Mating Count'].sum().reset_index()
                      .groupby(['Population']).mean().reset_index()
+                     .drop('Simulation', axis=1)
                      .rename(columns={'Mating Count': 'Mean Attempts'})
     )
     st.dataframe(mean_attempts)
