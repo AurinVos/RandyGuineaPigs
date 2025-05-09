@@ -96,7 +96,7 @@ Here's how the functions are structured:
 ```python
 def simulate_matings(n_females=10, target_pregnancies=1, 
                      pregnancy_chance=0.091, pregnant_chance=0.0):
-    """
+    ""
     Simulates a guinea pig lovefest until a set number of pregnancies occur.
     
     Parameters:
@@ -107,12 +107,12 @@ def simulate_matings(n_females=10, target_pregnancies=1,
     
     Returns:
     - dict: A record of each female's total snuggle sessions, split by pregnancy status.
-    """
+    ""
 
 @st.cache_data(show_spinner=True)
 def run_simulations(n_females=10, target_pregnancies=1, simulations=100, 
                     pregnancy_chance=0.091, pregnant_chance=0.0):
-    """
+    ""
     Runs the guinea pig mating simulation multiple times to analyze snuggle stats.
 
     Parameters:
@@ -124,7 +124,7 @@ def run_simulations(n_females=10, target_pregnancies=1, simulations=100,
 
     Returns:
     - pd.DataFrame: A log of piggy passion across all simulations.
-    """
+    ""
 ```""")
 
 # Sidebar Inputs
@@ -179,5 +179,23 @@ if st.sidebar.button("Run Simulation"):
 
     st.subheader("📉 Frequency Table")
     st.dataframe(frequency_table.head(50))
+
+    # Additional HVPlot-style Histogram
+    st.subheader("📊 Total Mating Attempts per Population")
+    import hvplot.pandas  # Ensure hvplot is available
+
+    hist_plot = mate_df.groupby(['Simulation', 'Population'])['Mating Count'].sum().reset_index().hvplot.hist(
+        by='Population',
+        y='Mating Count',
+        bins=50,
+        alpha=0.6,
+        width=700,
+        title='Distribution of Mating Attempts',
+        xlabel='Attempts',
+        ylabel='Frequency'
+    )
+    st.bokeh_chart(hist_plot)
+    st.dataframe(frequency_table.head(50))
+    
 else:
     st.info("Use the sidebar to configure and run the simulation.")
