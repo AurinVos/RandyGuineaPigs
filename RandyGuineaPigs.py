@@ -167,7 +167,7 @@ if st.sidebar.button("Run Simulation"):
     )
 
     st.subheader("📊 Sample Output Data")
-    st.dataframe(mate_df.head(20))
+    st.dataframe(mate_df.head(2))
 
     st.subheader("📈 Distribution of Guinea Pig Shagging")
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -177,25 +177,17 @@ if st.sidebar.button("Run Simulation"):
     ax.set_ylabel("Frequency")
     st.pyplot(fig)
 
-    st.subheader("📉 Frequency Table")
-    st.dataframe(frequency_table.head(50))
-
-    # Additional HVPlot-style Histogram
     st.subheader("📊 Total Mating Attempts per Population")
-    import hvplot.pandas  # Ensure hvplot is available
+    agg_df = mate_df.groupby(['Simulation', 'Population'])['Mating Count'].sum().reset_index()
+    fig2, ax2 = plt.subplots(figsize=(10, 6))
+    sns.histplot(data=agg_df, x='Mating Count', hue='Population', bins=50, alpha=0.6, ax=ax2)
+    ax2.set_title('Distribution of Mating Attempts')
+    ax2.set_xlabel('Attempts')
+    ax2.set_ylabel('Frequency')
+    st.pyplot(fig2)
 
-    hist_plot = mate_df.groupby(['Simulation', 'Population'])['Mating Count'].sum().reset_index().hvplot.hist(
-        by='Population',
-        y='Mating Count',
-        bins=50,
-        alpha=0.6,
-        width=700,
-        title='Distribution of Mating Attempts',
-        xlabel='Attempts',
-        ylabel='Frequency'
-    )
-    st.bokeh_chart(hist_plot)
-    st.dataframe(frequency_table.head(50))
+    st.subheader("📉 Frequency Table")
+    st.dataframe(frequency_table.head(2))
     
 else:
     st.info("Use the sidebar to configure and run the simulation.")
