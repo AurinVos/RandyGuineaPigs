@@ -169,13 +169,9 @@ if st.sidebar.button("Run Simulation"):
     st.subheader("📊 Sample Output Data")
     st.dataframe(mate_df.head(2))
 
-    st.subheader("📈 Distribution of Guinea Pig Shagging")
-    fig, ax = plt.subplots(figsize=(10, 6))
-    sns.histplot(data=melted_df, x='Shag_counts', hue='Mating Type', bins=20, kde=True, ax=ax)
-    ax.set_title("Distribution of Shag Counts by Type")
-    ax.set_xlabel("Number of Shags")
-    ax.set_ylabel("Frequency")
-    st.pyplot(fig)
+    st.subheader("🧮 Evaluation of Shagging Reproduction")
+    mean_attempts = mate_df.groupby('Population')['Mating Count'].mean().reset_index().rename(columns={'Mating Count': 'Mean Attempts'})
+    st.dataframe(mean_attempts)
 
     st.subheader("📊 Total Mating Attempts per Population")
     agg_df = mate_df.groupby(['Simulation', 'Population'])['Mating Count'].sum().reset_index()
@@ -185,6 +181,14 @@ if st.sidebar.button("Run Simulation"):
     ax2.set_xlabel('Attempts')
     ax2.set_ylabel('Frequency')
     st.pyplot(fig2)
+
+    st.subheader("📈 Distribution of Guinea Pig Shagging")
+    fig, ax = plt.subplots(figsize=(10, 6))
+    sns.histplot(data=melted_df, x='Shag_counts', hue='Mating Type', bins=20, kde=True, ax=ax)
+    ax.set_title("Distribution of Shag Counts by Type")
+    ax.set_xlabel("Number of Shags")
+    ax.set_ylabel("Frequency")
+    st.pyplot(fig)
 
     st.subheader("📉 Frequency Table")
     st.dataframe(frequency_table.head(2))
