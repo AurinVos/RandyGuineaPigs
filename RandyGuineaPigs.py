@@ -82,7 +82,7 @@ def run_simulations(n_females=10, target_pregnancies=1, simulations=100,
     return pd.DataFrame(all_matings)
 
 # --- Streamlit UI ---
-st.title("🐹 Guinea Pig Mating Simulator")
+st.title("🐹 Guinea Pig Shagging Simulator")
 st.markdown("This simulation explores the effects of mating strategies on guinea pig population dynamics.")
 
 with st.expander("💡 More information on how these guinea pig shenanigans are coded"):
