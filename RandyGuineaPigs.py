@@ -83,13 +83,13 @@ def run_simulations(n_females=10, target_pregnancies=1, simulations=100,
 
 # --- Streamlit UI ---
 st.title("🐹 Guinea Pig Shagging Simulator")
-st.markdown("This simulation explores the effects of mating strategies on guinea pig population dynamics.")
+st.markdown("This simulation explores the effects of shagging strategies on guinea pig population dynamics.")
 
 with st.expander("💡 More information on how these guinea pig shenanigans are coded"):
     st.markdown("""
-This app simulates guinea pig mating sessions until a target number of pregnancies is achieved. Two functions do the heavy lifting:
+This app simulates guinea pig shagging sessions until a target number of pregnancies is achieved. Two functions do the heavy lifting:
 
-- `simulate_matings(...)`: simulates one mating round and returns snuggle stats per female.
+- `simulate_matings(...)`: simulates one round of shagging and returns snuggle stats per female.
 - `run_simulations(...)`: runs the above multiple times to provide meaningful distributions.
 
 Here's how the functions are structured:
@@ -113,11 +113,11 @@ def simulate_matings(n_females=10, target_pregnancies=1,
 def run_simulations(n_females=10, target_pregnancies=1, simulations=100, 
                     pregnancy_chance=0.091, pregnant_chance=0.0):
     ""
-    Runs the guinea pig mating simulation multiple times to analyze snuggle stats.
+    Runs the guinea pig shagging simulation multiple times to analyze snuggle stats.
 
     Parameters:
     - n_females (int): Number of female guinea pigs per simulation.
-    - target_pregnancies (int): Baby bumps required to end each mating spree.
+    - target_pregnancies (int): Baby bumps required to end each shagging spree.
     - simulations (int): Total number of times we run the guinea pig dating experiment.
     - pregnancy_chance (float): Probability of pregnancy if unpregnant.
     - pregnant_chance (float): Probability of pregnancy if already pregnant (should be zero).
@@ -184,14 +184,14 @@ if st.sidebar.button("Run Simulation"):
     fig2, ax2 = plt.subplots(figsize=(10, 6))
     sns.histplot(data=agg_df, x='Mating Count', hue='Population', bins=50, alpha=0.6, ax=ax2)
     ax2.set_title('Distribution of Mating Attempts')
-    ax2.set_xlabel('Attempts')
-    ax2.set_ylabel('Frequency')
+    ax2.set_xlabel('Shagging Attempts')
+    ax2.set_ylabel('Shagging Attempt Frequency')
     st.pyplot(fig2)
 
     st.subheader("📈 Distribution of Guinea Pig Shagging")
     fig, ax = plt.subplots(figsize=(10, 6))
     sns.histplot(data=melted_df, x='Shag_counts', hue='Mating Type', bins=20, kde=True, ax=ax)
-    ax.set_title("Distribution of Shag Counts by Type")
+    ax.set_title("Distribution of Shagging Counts by Type")
     ax.set_xlabel("Number of Shags")
     ax.set_ylabel("Frequency")
     st.pyplot(fig)
