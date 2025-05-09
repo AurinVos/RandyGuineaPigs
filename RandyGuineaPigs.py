@@ -103,7 +103,7 @@ def simulate_matings(n_females=10, target_pregnancies=1,
     - n_females (int): Number of lady pigs available for romancing.
     - target_pregnancies (int): How many successful snuggles should lead to pregnancies.
     - pregnancy_chance (float): Chance of baby-making success with an unpregnant pig.
-    - pregnant_chance (float): Chance of impregnating a pig who’s already preggers (typically zero).
+    - pregnant_chance (float): Chance of impregnating a pig who's already preggers (typically zero).
     
     Returns:
     - dict: A record of each female's total snuggle sessions, split by pregnancy status.
