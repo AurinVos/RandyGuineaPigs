@@ -170,7 +170,12 @@ if st.sidebar.button("Run Simulation"):
     st.dataframe(mate_df.head(2))
 
     st.subheader("🧮 Evaluation of Shagging Reproduction")
-    mean_attempts = mate_df.groupby('Population')['Mating Count'].mean().reset_index().rename(columns={'Mating Count': 'Mean Attempts'})
+    mean_attempts = (mate_df
+                     .groupby(['Simulation','Population'])
+                     ['Mating Count'].sum().reset_index()
+                     .groupby(['Population']).mean().reset_index()
+                     .rename(columns={'Mating Count': 'Mean Attempts'})
+    )
     st.dataframe(mean_attempts)
 
     st.subheader("📊 Total Mating Attempts per Population")
