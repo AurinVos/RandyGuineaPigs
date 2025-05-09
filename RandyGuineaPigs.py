@@ -189,12 +189,15 @@ if st.sidebar.button("Run Simulation"):
     st.pyplot(fig2)
 
     st.subheader("📈 Distribution of Guinea Pig Shagging")
-    fig, ax = plt.subplots(figsize=(10, 6))
-    sns.histplot(data=melted_df, x='Shag_counts', hue='Mating Type', bins=20, kde=True, ax=ax)
-    ax.set_title("Distribution of Shagging Counts by Type")
-    ax.set_xlabel("Number of Shags")
-    ax.set_ylabel("Frequency")
-    st.pyplot(fig)
+    for pop in melted_df['Population'].unique():
+        st.markdown(f"**Population {pop} Females**")
+        fig, ax = plt.subplots(figsize=(10, 6))
+        subset = melted_df[melted_df['Population'] == pop]
+        sns.histplot(data=subset, x='Shag_counts', hue='Mating Type', bins=20, kde=True, ax=ax)
+        ax.set_title(f"Distribution of Shag Counts by Type — Population {pop}")
+        ax.set_xlabel("Number of Shags")
+        ax.set_ylabel("Frequency")
+        st.pyplot(fig)
 
     st.subheader("📉 Frequency Table")
     st.dataframe(frequency_table.head(2))
