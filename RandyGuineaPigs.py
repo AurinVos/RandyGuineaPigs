@@ -88,7 +88,9 @@ st.title("🐹 Guinea Pig Shagging Simulator")
 st.markdown("""
 Welcome to the **Guinea Pig Shagging Simulator**, a playful yet statistically inspired app that lets you explore the surprising dynamics of rodent reproduction.
 
-This project was sparked by a delightfully randy blog post by [Caroline Jagtenberg](https://blog.vvsor.nl/author/carolinejagtenberg/), an accomplished mathematical mind and occasional humorist. Her recent piece — _“Maths for Matings: Guinea Pig Gone Viral”_ — takes a cheeky look at Randy, a rather prolific male guinea pig with a single-minded mission. So go and read that if you have not done so!.
+This project was sparked by a delightfully randy blog post by [Caroline Jagtenberg](https://blog.vvsor.nl/author/carolinejagtenberg/), an accomplished mathematical mind and occasional humorist. Her recent piece — _“Maths for Matings: Guinea Pig Gone Viral”_ — takes a cheeky look at Randy, a rather prolific male guinea pig with a single-minded mission. 
+
+Go and read that first if you have not yet done so!.
 
 While Caroline’s take is undeniably hilarious, it focused heavily on the **male perspective**: the valiant efforts of one shag-happy rodent. But what about the **females**? Surely being on the receiving end of this randy rampage isn't effortless — especially when the shags keep coming *even after* pregnancy.
 
@@ -177,11 +179,11 @@ pun_messages = [
 if st.sidebar.button("Run Simulation"):
     message1, message2, message3 = random.sample(pun_messages, 3)
     st.write(message1)
-    time.sleep(2)
+    time.sleep(4)
     st.write(message2)
-    time.sleep(3)
+    time.sleep(4)
     st.write(message3)
-    time.sleep(3)
+    time.sleep(5)
 
     frames = []
     for pop in population_sizes:
@@ -210,8 +212,12 @@ if st.sidebar.button("Run Simulation"):
         .reset_index(name='Num Females')
     )
 
-    st.subheader("📊 Sample Output Data")
-    st.dataframe(mate_df.head(2))
+    st.markdown("""
+    Ok, first things first. We need to see if we can reproduce the analysis of Caroline with these functions. 
+    Caroline used a pregnancy chance of 9.1% (0.091) and contrasted a population of 100 and 300 Guinea Pigs with Randy needing to impregnate 100 females before stopping the simulation (because Randy doesn't quit. Ever.).
+    The results Caroline found that, in order to get 100 pregnant guinea pics, 1330 shags were needed for a population of 300 females while 5700 shags were needed for a population of 100 Guinea Pigs.
+    See for yourself if you think these simulations are close enough to her results.   
+    """)
 
     st.subheader("🧮 Evaluation of Shagging Reproduction")
     mean_attempts = (mate_df
