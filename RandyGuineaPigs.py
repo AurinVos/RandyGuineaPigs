@@ -97,53 +97,11 @@ While Caroline’s take is undeniably hilarious, it focused heavily on the **mal
 This app was developed after Streamlit had sat on my "to explore" list for over a year. Caroline’s blog was the push I needed to dive in — and to rebalance the narrative. You see, in a truly **randy situation**, it’s not just the male driving the data. The females endure their own statistical journey — and now, you can stimulate (ah, crap a typo) it.
 
 Use the controls in the sidebar to experiment with population size, pregnancy probabilities, and explore what happens when you start asking: _How many shags does it take?_ And more importantly: _What do the females go through in the process?_
-
-Curious about the code? Check out my amazing code annotations below.
+            
+Click on **Run Simulation** to find out!
 
 Enjoy!
 """)
-
-with st.expander("💡 **Click here** for more information on how these guinea pig shenanigans are coded"):
-    st.markdown("""
-This app simulates guinea pig shagging sessions until a target number of pregnancies is achieved. Two functions do the heavy lifting:
-
-- `simulate_matings(...)`: simulates one round of shagging and returns snuggle stats per female.
-- `run_simulations(...)`: runs the above multiple times to provide meaningful distributions.
-
-Here's how the functions are structured:
-```python
-def simulate_matings(n_females=10, target_pregnancies=1, 
-                     pregnancy_chance=0.091, pregnant_chance=0.0):
-    ""
-    Simulates a guinea pig lovefest until a set number of pregnancies occur.
-    
-    Parameters:
-    - n_females (int): Number of lady pigs available for romancing.
-    - target_pregnancies (int): How many successful snuggles should lead to pregnancies.
-    - pregnancy_chance (float): Chance of baby-making success with an unpregnant pig.
-    - pregnant_chance (float): Chance of impregnating a pig who's already preggers (typically zero).
-    
-    Returns:
-    - dict: A record of each female's total snuggle sessions, split by pregnancy status.
-    ""
-
-@st.cache_data(show_spinner=True)
-def run_simulations(n_females=10, target_pregnancies=1, simulations=100, 
-                    pregnancy_chance=0.091, pregnant_chance=0.0):
-    ""
-    Runs the guinea pig shagging simulation multiple times to analyze snuggle stats.
-
-    Parameters:
-    - n_females (int): Number of female guinea pigs per simulation.
-    - target_pregnancies (int): Baby bumps required to end each shagging spree.
-    - simulations (int): Total number of times we run the guinea pig dating experiment.
-    - pregnancy_chance (float): Probability of pregnancy if unpregnant.
-    - pregnant_chance (float): Probability of pregnancy if already pregnant (should be zero).
-
-    Returns:
-    - pd.DataFrame: A log of piggy passion across all simulations.
-    ""
-```""")
 
 # Sidebar Inputs
 st.sidebar.header("Simulation Parameters")
@@ -296,7 +254,51 @@ if st.sidebar.button("Run Simulation"):
     Randy had a hard time to impregnate 100 females in a population of 100 females, but females also had a ... time. (I don't know what the right wording is here)
     Clearly, everything is chill when you have many more female buddies than the pregnancy requirement made up by Mr. or Ms. experimentor. Feel free to play around with the variables such as Population Size and Pregnancy Chance when choosing to run the simulation again.
     I hope you had fun, because I know I did :)
-    """)
+                
+    <small><em>Curious about the code? Click on the button below to investigate.</em></small>
+    """, unsafe_allow_html=True)
+
+    with st.expander("💡 **Click here** for more information on how these guinea pig shenanigans are coded"):
+    st.markdown("""
+This app simulates guinea pig shagging sessions until a target number of pregnancies is achieved. Two functions do the heavy lifting:
+
+- `simulate_matings(...)`: simulates one round of shagging and returns snuggle stats per female.
+- `run_simulations(...)`: runs the above multiple times to provide meaningful distributions.
+
+Here's how the functions are structured:
+```python
+def simulate_matings(n_females=10, target_pregnancies=1, 
+                     pregnancy_chance=0.091, pregnant_chance=0.0):
+    ""
+    Simulates a guinea pig lovefest until a set number of pregnancies occur.
+    
+    Parameters:
+    - n_females (int): Number of lady pigs available for romancing.
+    - target_pregnancies (int): How many successful snuggles should lead to pregnancies.
+    - pregnancy_chance (float): Chance of baby-making success with an unpregnant pig.
+    - pregnant_chance (float): Chance of impregnating a pig who's already preggers (typically zero).
+    
+    Returns:
+    - dict: A record of each female's total snuggle sessions, split by pregnancy status.
+    ""
+
+@st.cache_data(show_spinner=True)
+def run_simulations(n_females=10, target_pregnancies=1, simulations=100, 
+                    pregnancy_chance=0.091, pregnant_chance=0.0):
+    ""
+    Runs the guinea pig shagging simulation multiple times to analyze snuggle stats.
+
+    Parameters:
+    - n_females (int): Number of female guinea pigs per simulation.
+    - target_pregnancies (int): Baby bumps required to end each shagging spree.
+    - simulations (int): Total number of times we run the guinea pig dating experiment.
+    - pregnancy_chance (float): Probability of pregnancy if unpregnant.
+    - pregnant_chance (float): Probability of pregnancy if already pregnant (should be zero).
+
+    Returns:
+    - pd.DataFrame: A log of piggy passion across all simulations.
+    ""
+```""")
 
 else:
     st.info("Use the sidebar to configure and run the simulation.")
