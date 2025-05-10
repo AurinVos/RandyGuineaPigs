@@ -85,7 +85,21 @@ def run_simulations(n_females=10, target_pregnancies=1, simulations=100,
 
 # --- Streamlit UI ---
 st.title("🐹 Guinea Pig Shagging Simulator")
-st.markdown("This simulation explores the effects of shagging strategies on guinea pig population dynamics.")
+st.markdown("""
+Welcome to the **Guinea Pig Shagging Simulator**, a playful yet statistically inspired app that lets you explore the surprising dynamics of rodent reproduction.
+
+This project was sparked by a delightfully randy blog post by [Caroline Jagtenberg](https://blog.vvsor.nl/author/carolinejagtenberg/), an accomplished mathematical mind and occasional humorist. Her recent piece — _“Maths for Matings: Guinea Pig Gone Viral”_ — takes a cheeky look at Randy, a rather prolific male guinea pig with a single-minded mission. So go and read that if you have not done so!.
+
+While Caroline’s take is undeniably hilarious, it focused heavily on the **male perspective**: the valiant efforts of one shag-happy rodent. But what about the **females**? Surely being on the receiving end of this randy rampage isn't effortless — especially when the shags keep coming *even after* pregnancy.
+
+This app was developed after Streamlit had sat on my "to explore" list for over a year. Caroline’s blog was the push I needed to dive in — and to rebalance the narrative. You see, in a truly **randy situation**, it’s not just the male driving the data. The females endure their own statistical journey — and now, you can stimulate (ah, crap a typo) it.
+
+Use the controls in the sidebar to experiment with population size, pregnancy probabilities, and explore what happens when you start asking: _How many shags does it take?_ And more importantly: _What do the females go through in the process?_
+
+Curious about the code? Check out my amazing code annotations below.
+
+Enjoy!
+""")
 
 with st.expander("💡 More information on how these guinea pig shenanigans are coded"):
     st.markdown("""
@@ -138,10 +152,37 @@ simulations = st.sidebar.slider("Number of Simulations", 10, 500, 100, step=10)
 target_pregnancies = st.sidebar.number_input("Target Pregnancies", 1, 500, 100)
 pregnancy_chance = st.sidebar.slider("Pregnancy Chance (unpregnant)", 0.01, 0.5, 0.091, 0.005)
 
+pun_messages = [
+    "Crunching numbers... grip your hay bales, it's mating math madness 🌾💘",
+    "Running simulations... this might get uncomfortably squeaky 🐹📊",
+    "Breeding statistics... let’s get this squeak show on the road 🐾",
+    "Simulating rodent romance... it’s a statistical squeakquel! 🐹💕📈",
+    "Generating piggy passion plots... hope you're ready for some randy data 🐖🔥",
+    "Processing reproductive probabilities... please squeak quietly 🤫📊",
+    "From snuggle to scatterplot... the love data is loading 💘➡️📈",
+    "Lettuce begin the simulations... this data's about to multiply 🥬🐹",
+    "Pregnancy projections in progress... squeak and ye shall receive 🐹📉",
+    "Statistical fur-play incoming... hang onto your woodchips! 🪵📊",
+    "Randy's on the prowl... brace yourself for some statistical seduction 💋📈",
+    "The data's hot and bothered... calculating maximum squeak velocity 🔥🐹",
+    "Simulating high-frequency snuggling... no cuddle left behind 😈🐾",
+    "Booting up Randy's love engine... friction may occur 💨💘",
+    "Stand back — this simulation contains scenes of statistical intimacy 🛏️📊",
+    "Deploying pheromone protocols... expect elevated shag rates 🚨🐹",
+    "Guinea pig nightlife detected... calculating reproductive fallout 🌙🥂",
+    "Randy’s going full Monte Carlo... and full monte everything else too 😳🎲",
+    "Snuggle load: 99%... estimating impact on fur and fertility 🧪🐹"
+]
+
 if st.sidebar.button("Run Simulation"):
-    st.write("Crunching numbers... hold onto your hay bales 🐾")
-    time.sleep(7)
-    
+    message1, message2, message3 = random.sample(pun_messages, 3)
+    st.write(message1)
+    time.sleep(2)
+    st.write(message2)
+    time.sleep(3)
+    st.write(message3)
+    time.sleep(3)
+
     frames = []
     for pop in population_sizes:
         df = run_simulations(
