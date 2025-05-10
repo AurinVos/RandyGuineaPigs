@@ -226,7 +226,7 @@ if st.sidebar.button("Run Simulation"):
                      .groupby(['Population']).mean().reset_index()
                      .drop('Simulation', axis=1)
                      .rename(columns={'Mating Count': 'Mean Shagging Attempts'})
-                     .set_index('Populations')
+                     .set_index('Population')
     )
     st.dataframe(mean_attempts)
 
