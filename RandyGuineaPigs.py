@@ -4,6 +4,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import random
+import time
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -138,7 +140,8 @@ pregnancy_chance = st.sidebar.slider("Pregnancy Chance (unpregnant)", 0.01, 0.5,
 
 if st.sidebar.button("Run Simulation"):
     st.write("Crunching numbers... hold onto your hay bales 🐾")
-
+    time.sleep(7)
+    
     frames = []
     for pop in population_sizes:
         df = run_simulations(
@@ -203,7 +206,7 @@ if st.sidebar.button("Run Simulation"):
         )
         ax.set_title(f"Distribution of Shag Counts per Female — Population {pop}")
         ax.set_xlabel("Number of Shags per Female")
-        ax.set_ylabel("Frequency of a Female with a certain Shag Count")
+        ax.set_ylabel("Frequency of a Female with a certain number of Shags")
         st.pyplot(fig)
 
     st.subheader("📉 Shagging Frequency Table")
