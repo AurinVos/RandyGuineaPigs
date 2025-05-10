@@ -90,7 +90,7 @@ Welcome to the **Guinea Pig Shagging Simulator**, a playful yet statistically in
 
 This project was sparked by a delightfully randy blog post by [Caroline Jagtenberg](https://blog.vvsor.nl/author/carolinejagtenberg/), an accomplished mathematical mind and occasional humorist. Her recent piece — _“Maths for Matings: Guinea Pig Gone Viral”_ — takes a cheeky look at Randy, a rather prolific male guinea pig with a single-minded mission. 
 
-Go and read that first if you have not yet done so!.
+[Go and read that first if you have not yet done so!](https://blog.vvsor.nl/2025/05/maths-for-matings-guinea-pig-gone-viral/).
 
 While Caroline’s take is undeniably hilarious, it focused heavily on the **male perspective**: the valiant efforts of one shag-happy rodent. But what about the **females**? Surely being on the receiving end of this randy rampage isn't effortless — especially when the shags keep coming *even after* pregnancy.
 
