@@ -198,6 +198,7 @@ if st.sidebar.button("Run Simulation"):
         subset = frequency_table[frequency_table['Population'] == pop]
         sns.lineplot(data=subset,
                     x='Shag_counts',
+                    y='Num Females',
                     hue='Mating Type',
                     errorbar='ci',
                     ax=ax)
