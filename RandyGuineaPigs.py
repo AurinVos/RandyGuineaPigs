@@ -259,46 +259,46 @@ if st.sidebar.button("Run Simulation"):
     """, unsafe_allow_html=True)
 
     with st.expander("💡 **Click here** for more information on how these guinea pig shenanigans are coded"):
-    st.markdown("""
-    This app simulates guinea pig shagging sessions until a target number of pregnancies is achieved. Two functions do the heavy lifting:
+        st.markdown("""
+        This app simulates guinea pig shagging sessions until a target number of pregnancies is achieved. Two functions do the heavy lifting:
 
-    - `simulate_matings(...)`: simulates one round of shagging and returns snuggle stats per female.
-    - `run_simulations(...)`: runs the above multiple times to provide meaningful distributions.
+        - `simulate_matings(...)`: simulates one round of shagging and returns snuggle stats per female.
+        - `run_simulations(...)`: runs the above multiple times to provide meaningful distributions.
 
-    Here's how the functions are structured:
-    ```python
-    def simulate_matings(n_females=10, target_pregnancies=1, 
-                     pregnancy_chance=0.091, pregnant_chance=0.0):
-        ""
-        Simulates a guinea pig lovefest until a set number of pregnancies occur.
-        
-        Parameters:
-        - n_females (int): Number of lady pigs available for romancing.
-        - target_pregnancies (int): How many successful snuggles should lead to pregnancies.
-        - pregnancy_chance (float): Chance of baby-making success with an unpregnant pig.
-        - pregnant_chance (float): Chance of impregnating a pig who's already preggers (typically zero).
-        
-        Returns:
-        - dict: A record of each female's total snuggle sessions, split by pregnancy status.
-        ""
-
-    @st.cache_data(show_spinner=True)
-    def run_simulations(n_females=10, target_pregnancies=1, simulations=100, 
+        Here's how the functions are structured:
+        ```python
+        def simulate_matings(n_females=10, target_pregnancies=1, 
                         pregnancy_chance=0.091, pregnant_chance=0.0):
-        ""
-        Runs the guinea pig shagging simulation multiple times to analyze snuggle stats.
+            ""
+            Simulates a guinea pig lovefest until a set number of pregnancies occur.
+            
+            Parameters:
+            - n_females (int): Number of lady pigs available for romancing.
+            - target_pregnancies (int): How many successful snuggles should lead to pregnancies.
+            - pregnancy_chance (float): Chance of baby-making success with an unpregnant pig.
+            - pregnant_chance (float): Chance of impregnating a pig who's already preggers (typically zero).
+            
+            Returns:
+            - dict: A record of each female's total snuggle sessions, split by pregnancy status.
+            ""
 
-        Parameters:
-        - n_females (int): Number of female guinea pigs per simulation.
-        - target_pregnancies (int): Baby bumps required to end each shagging spree.
-        - simulations (int): Total number of times we run the guinea pig dating experiment.
-        - pregnancy_chance (float): Probability of pregnancy if unpregnant.
-        - pregnant_chance (float): Probability of pregnancy if already pregnant (should be zero).
+        @st.cache_data(show_spinner=True)
+        def run_simulations(n_females=10, target_pregnancies=1, simulations=100, 
+                            pregnancy_chance=0.091, pregnant_chance=0.0):
+            ""
+            Runs the guinea pig shagging simulation multiple times to analyze snuggle stats.
 
-        Returns:
-        - pd.DataFrame: A log of piggy passion across all simulations.
-        ""
-    ```""")
+            Parameters:
+            - n_females (int): Number of female guinea pigs per simulation.
+            - target_pregnancies (int): Baby bumps required to end each shagging spree.
+            - simulations (int): Total number of times we run the guinea pig dating experiment.
+            - pregnancy_chance (float): Probability of pregnancy if unpregnant.
+            - pregnant_chance (float): Probability of pregnancy if already pregnant (should be zero).
+
+            Returns:
+            - pd.DataFrame: A log of piggy passion across all simulations.
+            ""
+        ```""")
 
 else:
     st.info("Use the sidebar to configure and run the simulation.")
