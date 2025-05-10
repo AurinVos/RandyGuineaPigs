@@ -230,13 +230,13 @@ if st.sidebar.button("Run Simulation"):
     )
     st.dataframe(mean_attempts)
 
+    st.subheader("📊 Total Shagging Attempts per Population")
     st.markdown("""
     One interesting realization when looking at the data is the difference in the underlying distribution when taking a population of 100 or 300 females.
     When you look below you can see that the required shags to get to 100 pregnancies in the case of a population of 100 femaly Guinies is wild.
     Each simulation with a population of 100 produces widely varying numbers on the amount of shags needed to reach 100 pregnancies.     
     """)
 
-    st.subheader("📊 Total Shagging Attempts per Population")
     agg_df = mate_df.groupby(['Simulation', 'Population'])['Mating Count'].sum().reset_index()
     fig2, ax2 = plt.subplots(figsize=(10, 6))
     sns.histplot(data=agg_df, x='Mating Count', hue='Population', bins=50, alpha=0.6, ax=ax2)
@@ -245,12 +245,11 @@ if st.sidebar.button("Run Simulation"):
     ax2.set_ylabel('Shagging Attempt Frequency')
     st.pyplot(fig2)
 
+    st.subheader("📊 Histogram of Shag Count per Female")
     st.markdown("""
     So, let's have a more detailed look at the females in the simulation. 
     How often did a female get shagged? What a clear difference between the different populations!
     """)
-
-    st.subheader("📊 Histogram of Shag Count per Female")
 
     for pop in mate_df['Population'].unique():
         st.markdown(f"**Population {pop} Females**") 
@@ -268,6 +267,7 @@ if st.sidebar.button("Run Simulation"):
         ax.set_ylabel("Frequency of a Female with a certain number of Shags")
         st.pyplot(fig)
 
+    st.subheader("📈 Distribution of Guinea Pig Shagging before and after getting Pregnate ([Yes yes, pregante! 📺](https://www.youtube.com/watch?v=EShUeudtaFg))")
     st.markdown("""
     Apparently, getting randy with a small population of females asks much more of that small population, especially if the requirement is to get all of your fellow females pregnant!
     It is quite simple when you think about it. Once most of the females are pregnant it is quite hard to shag a female that is not pregnant.
@@ -276,7 +276,6 @@ if st.sidebar.button("Run Simulation"):
     Therefore, let's have a look at the distribution of pregnant females having a shag. 
     """)
     
-    st.subheader("📈 Distribution of Guinea Pig Shagging before and after getting Pregnate ([Yes yes, pregante! 📺](https://www.youtube.com/watch?v=EShUeudtaFg))")
     for pop in frequency_table['Population'].unique():
         st.markdown(f"**Population {pop} Females**")
         fig, ax = plt.subplots(figsize=(10, 6))
@@ -292,6 +291,7 @@ if st.sidebar.button("Run Simulation"):
         ax.set_ylabel("Frequency")
         st.pyplot(fig)
     
+    st.subheader("Closing the simulation")
     st.markdown("""  
     Randy had a hard time to impregnate 100 females in a population of 100 females, but females also had a time. (I don't know if hard is the right wording here...)
     Clearly, everything is chill when you have many more female buddies than the pregnancy requirement made up by Mr. or Ms. experimentor.
