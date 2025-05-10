@@ -103,7 +103,7 @@ Curious about the code? Check out my amazing code annotations below.
 Enjoy!
 """)
 
-with st.expander("💡 More information on how these guinea pig shenanigans are coded"):
+with st.expander("💡 **Click here** for more information on how these guinea pig shenanigans are coded"):
     st.markdown("""
 This app simulates guinea pig shagging sessions until a target number of pregnancies is achieved. Two functions do the heavy lifting:
 
