@@ -214,7 +214,7 @@ if st.sidebar.button("Run Simulation"):
 
     st.markdown("""
     Ok, first things first. We need to see if we can reproduce the analysis of Caroline with these functions. 
-    Caroline used a pregnancy chance of 9.1% (0.091) and contrasted a population of 100 and 300 Guinea Pigs with Randy needing to impregnate 100 females before stopping the simulation (because Randy doesn't quit. Ever.).
+    Caroline used a pregnancy chance of 9.1% (0.091) and contrasted a population of 100 and 300 Guinea Pigs with Randy needing to impregnate 100 females before Caroline stopped him and the simulation (because Randy doesn't quit. Ever.).
     The results Caroline found that, in order to get 100 pregnant guinea pics, 1330 shags were needed for a population of 300 females while 5700 shags were needed for a population of 100 Guinea Pigs.
     See for yourself if you think these simulations are close enough to her results.   
     """)
