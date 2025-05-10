@@ -179,11 +179,11 @@ pun_messages = [
 if st.sidebar.button("Run Simulation"):
     message1, message2, message3 = random.sample(pun_messages, 3)
     st.write(message1)
-    time.sleep(4)
+    time.sleep(2)
     st.write(message2)
-    time.sleep(4)
+    time.sleep(2)
     st.write(message3)
-    time.sleep(5)
+    time.sleep(3)
 
     frames = []
     for pop in population_sizes:
