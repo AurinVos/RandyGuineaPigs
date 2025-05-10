@@ -212,6 +212,7 @@ if st.sidebar.button("Run Simulation"):
         .reset_index(name='Num Females')
     )
 
+    st.subheader("🧮 Evaluation of Shagging Reproduction")
     st.markdown("""
     Ok, first things first. We need to see if we can reproduce the analysis of Caroline with these functions. 
     Caroline used a pregnancy chance of 9.1% (0.091) and contrasted a population of 100 and 300 Guinea Pigs with Randy needing to impregnate 100 females before Caroline stopped him and the simulation (because Randy doesn't quit. Ever.).
@@ -219,7 +220,6 @@ if st.sidebar.button("Run Simulation"):
     See for yourself if you think these simulations are close enough to her results.   
     """)
 
-    st.subheader("🧮 Evaluation of Shagging Reproduction")
     mean_attempts = (mate_df
                      .groupby(['Simulation','Population'])
                      ['Mating Count'].sum().reset_index()
