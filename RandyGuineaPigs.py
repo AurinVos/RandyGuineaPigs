@@ -148,11 +148,11 @@ def run_simulations(n_females=10, target_pregnancies=1, simulations=100,
 # Sidebar Inputs
 st.sidebar.header("Simulation Parameters")
 population_sizes = st.sidebar.multiselect(
-    "Select Population Sizes", [100, 200, 300, 400], default=[100, 300]
+    "Select Population Sizes", [50, 100, 200, 300, 400], default=[100, 300]
 )
 simulations = st.sidebar.slider("Number of Simulations", 10, 500, 100, step=10)
 target_pregnancies = st.sidebar.number_input("Target Pregnancies", 1, 500, 100)
-pregnancy_chance = st.sidebar.slider("Pregnancy Chance (unpregnant)", 0.01, 0.5, 0.091, 0.005)
+pregnancy_chance = st.sidebar.slider("Pregnancy Chance", 0.01, 0.5, 0.091, 0.005)
 
 pun_messages = [
     "Crunching numbers... grip your hay bales, it's mating math madness 🌾💘",
@@ -293,8 +293,8 @@ if st.sidebar.button("Run Simulation"):
     
     st.subheader("Closing the simulation")
     st.markdown("""  
-    Randy had a hard time to impregnate 100 females in a population of 100 females, but females also had a time. (I don't know if hard is the right wording here...)
-    Clearly, everything is chill when you have many more female buddies than the pregnancy requirement made up by Mr. or Ms. experimentor.
+    Randy had a hard time to impregnate 100 females in a population of 100 females, but females also had a ... time. (I don't know what the right wording is here)
+    Clearly, everything is chill when you have many more female buddies than the pregnancy requirement made up by Mr. or Ms. experimentor. Feel free to play around with the variables such as Population Size and Pregnancy Chance when choosing to run the simulation again.
     I hope you had fun, because I know I did :)
     """)
 
