@@ -188,6 +188,9 @@ if st.sidebar.button("Run Simulation"):
     ax2.set_ylabel('Shagging Attempt Frequency')
     st.pyplot(fig2)
 
+    st.subheader("📉 Frequency Table")
+    st.dataframe(frequency_table.head(2))
+
     st.subheader("📈 Distribution of Guinea Pig Shagging")
     for pop in frequency_table['Population'].unique():
         st.markdown(f"**Population {pop} Females**")
@@ -202,9 +205,6 @@ if st.sidebar.button("Run Simulation"):
         ax.set_xlabel("Number of Shags")
         ax.set_ylabel("Frequency")
         st.pyplot(fig)
-
-    st.subheader("📉 Frequency Table")
-    st.dataframe(frequency_table.head(2))
     
 else:
     st.info("Use the sidebar to configure and run the simulation.")
