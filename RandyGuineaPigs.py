@@ -188,7 +188,25 @@ if st.sidebar.button("Run Simulation"):
     ax2.set_ylabel('Shagging Attempt Frequency')
     st.pyplot(fig2)
 
-    st.subheader("📉 Frequency Table")
+    st.subheader("📊 Histogram of Mating Count per Female")
+
+    for pop in mate_df['Population'].unique():
+        st.markdown(f"**Population {pop} Females**") 
+        fig, ax = plt.subplots(figsize=(10, 6))
+        subset = mate_df[mate_df['Population'] == pop]
+        sns.histplot(
+            data=subset,
+            x='Mating Count',
+            bins=50,
+            kde=False,
+            ax=ax
+        )
+        ax.set_title(f"Distribution of Shag Counts per Female — Population {pop}")
+        ax.set_xlabel("Number of Shags per Female")
+        ax.set_ylabel("Frequency of a Female with a certain Shag Count")
+        st.pyplot(fig)
+
+    st.subheader("📉 Shagging Frequency Table")
     st.dataframe(frequency_table.head(2))
 
     st.subheader("📈 Distribution of Guinea Pig Shagging")
